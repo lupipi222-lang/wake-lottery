@@ -1,0 +1,8 @@
+# 你们俩自己的账，别公开
+pool.json
+state.json
+inventory.json
+history.jsonl
+lottery.lock
+*.tmp
+__pycache__/
