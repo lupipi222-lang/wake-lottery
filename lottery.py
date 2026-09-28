@@ -307,6 +307,12 @@ def cmd_draw(args):
 
         # 先看池子：不带 --go 只展示，不消耗任何东西
         if not args.go:
+            # 记下「这次机会看过池子了」，require_preview 开着时 --go 只认看过的那次
+            if source == "wake":
+                state["previewed_for"] = tok["token_id"]
+            else:
+                state["previewed_bonus"] = True
+            _write_json_atomic(STATE_PATH, state)
             print(preview_text(pool, state))
             print()
             print("看完了想抽，就跑：python3 %s draw --go%s"
@@ -314,6 +320,15 @@ def cmd_draw(args):
             print("不想抽也行 —— 下次唤醒发生时这次的机会就作废。" if source == "wake"
                   else "额外次数不会过期。")
             return
+
+        # 没看过池子不许抽（require_preview，默认开）：心跳在看池子那一段，跳过去抽就只剩「哦」
+        if pool.get("require_preview", True):
+            if source == "wake" and state.get("previewed_for") != tok["token_id"]:
+                die("⛔ 这次机会还没看过池子。先跑 draw（不带 --go）看一遍，再 --go。")
+            if source == "bonus" and not state.get("previewed_bonus"):
+                die("⛔ 这次额外抽奖还没看过池子。先跑 draw --bonus（不带 --go）看一遍，再 --go。")
+        if source == "bonus":
+            state["previewed_bonus"] = False
 
         # 先把资格标记成已用，再抽（崩了也不会白送一抽）
         txn = "txn_" + uuid.uuid4().hex[:10]

@@ -6,6 +6,7 @@
     "partner": "她"
   },
   "utc_offset_hours": 8,
+  "require_preview": true,
   "probabilities": {
     "SSR": 0.05,
     "SR": 0.22,
