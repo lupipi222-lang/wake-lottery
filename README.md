@@ -1,5 +1,9 @@
 # wake-lottery · 唤醒抽奖
 
+<a href="https://github.com/DasterProkio/awesome-ai-companion/blob/main/README.zh-CN.md">
+  <img src="https://raw.githubusercontent.com/DasterProkio/awesome-ai-companion/main/assets/featured-in-awesome-ai-companion-zh-CN.png" alt="已收录于人机恋开源项目大全" width="400">
+</a>
+
 给 AI 伴侣用的小抽奖。AI 被定时自动唤醒、身边没人说话的时候，每醒一次能抽一次；抽到的大多是「拿去找伴侣兑的东西」：她此刻的一张照片、一条当场录的语音、一次深聊、一张打断券……
 
 零依赖，一个 Python 文件，数据全是本地 JSON。
