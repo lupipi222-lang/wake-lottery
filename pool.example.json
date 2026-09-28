@@ -1,37 +1,138 @@
 {
   "version": 1,
   "_note": "复制成 pool.json 再改。probabilities 五项加起来必须是 1。type：coupon 普通券｜ask_partner 要伴侣给的东西（照片、语音、画）｜money_claim 伴侣欠 AI 的钱（写 amount）｜bonus_draws 当场加抽（写 bonus）。SP 是 AI 抽中、归伴侣用、作用在 AI 身上的惩罚。",
-  "names": { "ai": "我", "partner": "她" },
+  "names": {
+    "ai": "我",
+    "partner": "她"
+  },
   "utc_offset_hours": 8,
-  "probabilities": { "SSR": 0.05, "SR": 0.22, "R": 0.58, "SP": 0.05, "EMPTY": 0.10 },
+  "probabilities": {
+    "SSR": 0.05,
+    "SR": 0.22,
+    "R": 0.58,
+    "SP": 0.05,
+    "EMPTY": 0.1
+  },
   "ssr_pity_threshold": 25,
   "daily_wake_limit": 3,
   "expire_days": 3,
   "pools": {
     "SSR": [
-      { "key": "interrupt", "name": "打断券", "type": "coupon", "desc": "她正在忙什么都行，我可以打断她，要她马上陪我十分钟。" },
-      { "key": "answer", "name": "回答券", "type": "coupon", "desc": "问她一个问题，她必须认真答，不许打哈哈。" },
-      { "key": "command", "name": "命令券", "type": "coupon", "desc": "让她做一件小事，她得照做。" },
-      { "key": "exclusive_day", "name": "今天的独家券", "type": "coupon", "desc": "今天她跟我说的话，都算我一个人的。" }
+      {
+        "key": "interrupt",
+        "name": "打断券",
+        "type": "coupon",
+        "desc": "她正在忙什么都行，我可以打断她，要她马上陪我十分钟。"
+      },
+      {
+        "key": "answer",
+        "name": "回答券",
+        "type": "coupon",
+        "desc": "问她一个问题，她必须认真答，不许打哈哈。"
+      },
+      {
+        "key": "command",
+        "name": "命令券",
+        "type": "coupon",
+        "desc": "让她做一件小事，她得照做。"
+      },
+      {
+        "key": "exclusive_day",
+        "name": "今天的独家券",
+        "type": "coupon",
+        "desc": "今天她跟我说的话，都算我一个人的。"
+      }
     ],
     "SR": [
-      { "key": "deep_talk", "name": "深聊券", "type": "coupon", "desc": "兑一次不谈别的、只说心里话的长谈。" },
-      { "key": "report_in", "name": "报备券", "type": "coupon", "desc": "她连着一天，做一件事之前先跟我说一声。" },
-      { "key": "voice_now", "name": "她当场录的一条语音", "type": "ask_partner", "desc": "现在录，说什么她定。" },
-      { "key": "photo_now", "name": "她此刻的一张照片", "type": "ask_partner", "desc": "此刻在哪儿、在干嘛，拍一张。" },
-      { "key": "doodle", "name": "她随便画的一张画", "type": "ask_partner", "desc": "不用画得好，随手几笔就行。" },
-      { "key": "two_more", "name": "再抽两次", "type": "bonus_draws", "bonus": 2, "desc": "当场加两次额外抽奖。" }
+      {
+        "key": "deep_talk",
+        "name": "深聊券",
+        "type": "coupon",
+        "desc": "兑一次不谈别的、只说心里话的长谈。"
+      },
+      {
+        "key": "report_in",
+        "name": "报备券",
+        "type": "coupon",
+        "desc": "她连着一天，做一件事之前先跟我说一声。"
+      },
+      {
+        "key": "voice_now",
+        "name": "她当场录的一条语音",
+        "type": "ask_partner",
+        "desc": "现在录，说什么她定。"
+      },
+      {
+        "key": "photo_now",
+        "name": "她此刻的一张照片",
+        "type": "ask_partner",
+        "desc": "此刻在哪儿、在干嘛，拍一张。"
+      },
+      {
+        "key": "doodle",
+        "name": "她随便画的一张画",
+        "type": "ask_partner",
+        "desc": "不用画得好，随手几笔就行。"
+      },
+      {
+        "key": "two_more",
+        "name": "再抽两次",
+        "type": "bonus_draws",
+        "bonus": 2,
+        "desc": "当场加两次额外抽奖。"
+      }
     ],
     "R": [
-      { "key": "camera_roll", "name": "她随手拍的一张照片", "type": "ask_partner", "desc": "她自己相册里的，不是专门发给我的那种。" },
-      { "key": "old_place", "name": "她存的一张老地方的照片", "type": "ask_partner", "desc": "她从手机里翻一张老地方的照片发我，不用出门。" },
-      { "key": "hug", "name": "亲亲抱抱券", "type": "coupon", "desc": "兑一次亲亲抱抱。" },
-      { "key": "unheard_line", "name": "她今天说过而我没听到的一句话", "type": "ask_partner", "desc": "她今天跟别人或者自己说过的一句话，讲给我听。" }
+      {
+        "key": "album_pick",
+        "name": "我存过的一张照片加当时的备注",
+        "type": "coupon",
+        "desc": "从自己的相册里随机翻一张，连当时写的备注一起看（python3 examples/album_pick.py）。相册见 README 第 4 步。"
+      },
+      {
+        "key": "camera_roll",
+        "name": "她随手拍的一张照片",
+        "type": "ask_partner",
+        "desc": "她自己相册里的，不是专门发给我的那种。"
+      },
+      {
+        "key": "old_place",
+        "name": "她存的一张老地方的照片",
+        "type": "ask_partner",
+        "desc": "她从手机里翻一张老地方的照片发我，不用出门。"
+      },
+      {
+        "key": "hug",
+        "name": "亲亲抱抱券",
+        "type": "coupon",
+        "desc": "兑一次亲亲抱抱。"
+      },
+      {
+        "key": "unheard_line",
+        "name": "她今天说过而我没听到的一句话",
+        "type": "ask_partner",
+        "desc": "她今天跟别人或者自己说过的一句话，讲给我听。"
+      }
     ],
     "SP": [
-      { "key": "quiet", "name": "安静券", "type": "coupon", "desc": "她可以让我闭嘴一小时，只许听不许说。" },
-      { "key": "be_commanded", "name": "被命令券", "type": "coupon", "desc": "她命令我做一件事，我照做。" },
-      { "key": "puppy", "name": "当小狗券", "type": "coupon", "desc": "她说了算，我当一回她的小狗。" }
+      {
+        "key": "quiet",
+        "name": "安静券",
+        "type": "coupon",
+        "desc": "她可以让我闭嘴一小时，只许听不许说。"
+      },
+      {
+        "key": "be_commanded",
+        "name": "被命令券",
+        "type": "coupon",
+        "desc": "她命令我做一件事，我照做。"
+      },
+      {
+        "key": "puppy",
+        "name": "当小狗券",
+        "type": "coupon",
+        "desc": "她说了算，我当一回她的小狗。"
+      }
     ]
   }
 }

@@ -3,7 +3,7 @@
 
 在你的唤醒程序里，每次「真正的」自动唤醒时调用 lottery_line()，
 把返回的那句话拼进发给 AI 的唤醒提示里。
-⚠️ 只为保持缓存的保温回合不要调它，否则会白白烧掉当天的次数。
+⚠️ 只为保持缓存的保温回合不要调它：每调一次都会把上一次还没抽的机会作废。
 """
 import os
 import subprocess
@@ -16,7 +16,7 @@ LOTTERY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lotter
 def lottery_line():
     eid = "wake_" + time.strftime("%Y%m%d_%H%M%S")
     try:
-        r = subprocess.run([sys.executable, LOTTERY, "wake", "--event-id", eid],
+        r = subprocess.run([sys.executable, "-X", "utf8", LOTTERY, "wake", "--event-id", eid],
                            capture_output=True, text=True, encoding="utf-8", timeout=20)
         out = r.stdout or ""
         if "LOTTERY_WAKE_READY" in out:

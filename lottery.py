@@ -403,6 +403,8 @@ def print_inventory(inv, pool):
         print("  %s %s%s  [%s]%s" % (it["rarity"], it["name"], flag, it["reward_id"], tail))
     if money:
         print("待兑现的钱：%s（%d 张）" % (sum(i.get("amount", 0) for i in money), len(money)))
+        for it in money:
+            print("  %s %s  [%s]" % (it["rarity"], it["name"], it["reward_id"]))
     print("%s持有、对%s生效的 SP：" % (partner, ai))
     if not hers:
         print("  （空）")
@@ -477,7 +479,8 @@ def cmd_use(args):
     with FileLock(LOCK_PATH):
         pool, state, inv = load_all()
         ai, partner = names(pool)
-        sweep_expired(pool, inv)
+        if sweep_expired(pool, inv):
+            _write_json_atomic(INV_PATH, inv)
         for it in inv["items"]:
             if it["reward_id"] != args.reward_id:
                 continue
